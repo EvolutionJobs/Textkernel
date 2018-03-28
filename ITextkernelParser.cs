@@ -1,5 +1,6 @@
 ﻿namespace Evolution.Textkernel
 {
+    using Evolution.Textkernel.Models;
     using System;
     using System.Collections.Generic;
     using System.Text;
@@ -7,6 +8,6 @@
 
     public interface ITextkernelParser
     {
-        Task<string> Parse(byte[] file);
+        Task<Profile> Parse(byte[] file);
     }
 }

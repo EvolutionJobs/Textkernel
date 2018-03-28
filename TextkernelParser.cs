@@ -1,5 +1,6 @@
 ﻿namespace Evolution.Textkernel
 {
+    using Evolution.Textkernel.Models;
     using Extract;
     using Microsoft.Extensions.Logging;
     using System;
@@ -13,6 +14,7 @@
     using System.ServiceModel;
     using System.Text;
     using System.Threading.Tasks;
+    using System.Xml.Serialization;
 
     class TextkernelParser : ITextkernelParser
     {
@@ -25,6 +27,8 @@
 
         entry[] entries = new entry[0];
 
+        XmlSerializer serializer = new XmlSerializer(typeof(Profile));
+
         public TextkernelParser(ILoggerFactory logger, string account, string username, string password)
         {
             this.logger = logger.CreateLogger<TextkernelParser>();
@@ -34,7 +38,7 @@
             this.password = password;
         }
 
-        async Task<string> ITextkernelParser.Parse(byte[] file)
+        async Task<Profile> ITextkernelParser.Parse(byte[] file)
         {
             this.logger.LogInformation("Parsing {FileLength} Bytes", file.Length);
 
@@ -47,7 +51,23 @@
             string rawResult = result.@return;
             this.logger.LogInformation("Textkernel Extract Response {Chars}chars in {Duration}ms", rawResult.Length, sw.ElapsedMilliseconds);
 
-            return rawResult;
+
+            sw.Restart();
+            Profile p;
+
+            using (var stream = new MemoryStream())
+            using (var writer = new StreamWriter(stream))
+            {
+                writer.Write(rawResult);
+                writer.Flush();
+                stream.Position = 0;
+
+                p = this.serializer.Deserialize(stream) as Profile;
+            }
+            sw.Stop();
+            this.logger.LogInformation("Textkernel Parsed: {CurrentJob} in {Duration}ms", p?.Summary?.CurrentJob, sw.ElapsedMilliseconds);
+
+            return p;
         }
     }
 }
