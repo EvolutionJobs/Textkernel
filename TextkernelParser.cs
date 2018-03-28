@@ -1,5 +1,6 @@
 ﻿namespace Evolution.Textkernel
 {
+    using Extract;
     using Microsoft.Extensions.Logging;
     using System;
     using System.Collections.Generic;
@@ -24,25 +25,29 @@
 
         Extract.entry[] entries = new Extract.entry[0];
 
-        public TextkernelParser(ILoggerFactory logger, string account, string username, string password, string environment)
+        public TextkernelParser(ILoggerFactory logger, string account, string username, string password)
         {
             this.logger = logger.CreateLogger<TextkernelParser>();
+
             this.account = account;
             this.username = username;
             this.password = password;
-            this.environment = environment;
         }
 
         async Task<string> ITextkernelParser.Parse(byte[] file)
         {
-            //var accessTokenService = new RequestAccessToken.RequestAccessTokenServiceClient();
+            this.logger.LogInformation("Parsing {FileLength} Bytes", file.Length);
 
-            //var token = await accessTokenService.getTokenAsync(this.account, this.username, this.password, this.environment);
+            var extractService = new ExtractInterfaceClient();
 
-            var extractService = new Extract.ExtractInterfaceClient();
+            var sw = new Stopwatch();
+            sw.Start();
             var result = await extractService.extractAdvancedAsync(this.account, this.username, this.password, this.entries, null, file, null, null, null);
+            sw.Stop();
+            string rawResult = result.@return;
+            this.logger.LogInformation("Textkernel Extract Response {Chars}chars in {Duration}ms", rawResult.Length, sw.ElapsedMilliseconds);
 
-            return result.@return;
+            return rawResult;
         }
     }
 }
