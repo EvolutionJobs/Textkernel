@@ -11,5 +11,8 @@
     {
         [XmlElement("ProfileSummary")]
         public ProfileSummary Summary { get; set; }
+
+        [XmlElement("Personal")]
+        public Personal Personal { get; set; }
     }
 }

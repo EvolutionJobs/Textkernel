@@ -1,8 +1,5 @@
 ﻿namespace Evolution.Textkernel.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
     using System.Xml.Serialization;
 
     public class ProfileSummary
@@ -27,5 +24,23 @@
 
         [XmlElement("CVComment")]
         public string CVComment { get; set; }
+
+        [XmlElement("SalaryRangeCode")]
+        public string SalaryRangeCode { get; set; }
+
+        [XmlElement("SalaryRangeDescription")]
+        public string SalaryRangeDescription { get; set; }
+
+        [XmlElement("ProfileStatusCode")]
+        public string ProfileStatusCode { get; set; }
+
+        [XmlElement("ProfileStatusCodeDescription")]
+        public string ProfileStatusCodeDescription { get; set; }
+
+        [XmlElement("ExternalID")]
+        public string ExternalID { get; set; }
+
+        [XmlElement("ProfilePicture")]
+        public ProfilePicture Picture { get; set; }
     }
 }
