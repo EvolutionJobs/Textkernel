@@ -23,7 +23,7 @@
         string password;
         string environment;
 
-        Extract.entry[] entries = new Extract.entry[0];
+        entry[] entries = new entry[0];
 
         public TextkernelParser(ILoggerFactory logger, string account, string username, string password)
         {

@@ -6,7 +6,7 @@
   },
   "ExtendedData": {
     "Uri": "https://staging.textkernel.nl/match/soap/extract?wsdl",
-    "Namespace": "Extract",
+    "Namespace": "Evolution.Textkernel.Extract",
     "SelectedAccessLevelForGeneratedClass": "Internal",
     "GenerateMessageContract": false,
     "ReuseTypesinReferencedAssemblies": true,

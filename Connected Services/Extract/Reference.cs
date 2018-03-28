@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Extract
+namespace Evolution.Textkernel.Extract
 {
     
     
@@ -188,32 +188,32 @@ namespace Extract
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("dotnet-svcutil", "1.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://home.textkernel.nl/sourcebox/soap/extract", ConfigurationName="Extract.ExtractInterface")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://home.textkernel.nl/sourcebox/soap/extract", ConfigurationName="Evolution.Textkernel.Extract.ExtractInterface")]
     internal interface ExtractInterface
     {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://home.textkernel.nl/sourcebox/soap/extract/ExtractInterface/extractRequest", ReplyAction="http://home.textkernel.nl/sourcebox/soap/extract/ExtractInterface/extractResponse" +
             "")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Extract.ExtractException), Action="http://home.textkernel.nl/sourcebox/soap/extract/ExtractInterface/extract/Fault/E" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Evolution.Textkernel.Extract.ExtractException), Action="http://home.textkernel.nl/sourcebox/soap/extract/ExtractInterface/extract/Fault/E" +
             "xtractException", Name="ExtractException")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<Extract.extractResponse> extractAsync(Extract.extractRequest request);
+        System.Threading.Tasks.Task<Evolution.Textkernel.Extract.extractResponse> extractAsync(Evolution.Textkernel.Extract.extractRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://home.textkernel.nl/sourcebox/soap/extract/ExtractInterface/extractAdvanced" +
             "Request", ReplyAction="http://home.textkernel.nl/sourcebox/soap/extract/ExtractInterface/extractAdvanced" +
             "Response")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Extract.ExtractException), Action="http://home.textkernel.nl/sourcebox/soap/extract/ExtractInterface/extractAdvanced" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Evolution.Textkernel.Extract.ExtractException), Action="http://home.textkernel.nl/sourcebox/soap/extract/ExtractInterface/extractAdvanced" +
             "/Fault/ExtractException", Name="ExtractException")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<Extract.extractAdvancedResponse> extractAdvancedAsync(Extract.extractAdvancedRequest request);
+        System.Threading.Tasks.Task<Evolution.Textkernel.Extract.extractAdvancedResponse> extractAdvancedAsync(Evolution.Textkernel.Extract.extractAdvancedRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://home.textkernel.nl/sourcebox/soap/extract/ExtractInterface/extractURLReque" +
             "st", ReplyAction="http://home.textkernel.nl/sourcebox/soap/extract/ExtractInterface/extractURLRespo" +
             "nse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Extract.ExtractException), Action="http://home.textkernel.nl/sourcebox/soap/extract/ExtractInterface/extractURL/Faul" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Evolution.Textkernel.Extract.ExtractException), Action="http://home.textkernel.nl/sourcebox/soap/extract/ExtractInterface/extractURL/Faul" +
             "t/ExtractException", Name="ExtractException")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<Extract.extractURLResponse> extractURLAsync(Extract.extractURLRequest request);
+        System.Threading.Tasks.Task<Evolution.Textkernel.Extract.extractURLResponse> extractURLAsync(Evolution.Textkernel.Extract.extractURLRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -253,13 +253,13 @@ namespace Extract
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://home.textkernel.nl/sourcebox/soap/extract", Order=7)]
         [System.Xml.Serialization.XmlElementAttribute("options", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
-        public Extract.entry[] options;
+        public Evolution.Textkernel.Extract.entry[] options;
         
         public extractRequest()
         {
         }
         
-        public extractRequest(string account, string username, string password, string fileName, byte[] fileContent, byte[] tmfFileContent, byte[] apimap, Extract.entry[] options)
+        public extractRequest(string account, string username, string password, string fileName, byte[] fileContent, byte[] tmfFileContent, byte[] apimap, Evolution.Textkernel.Extract.entry[] options)
         {
             this.account = account;
             this.username = username;
@@ -314,7 +314,7 @@ namespace Extract
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://home.textkernel.nl/sourcebox/soap/extract", Order=3)]
         [System.Xml.Serialization.XmlElementAttribute("clientSpecificArguments", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
-        public Extract.entry[] clientSpecificArguments;
+        public Evolution.Textkernel.Extract.entry[] clientSpecificArguments;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://home.textkernel.nl/sourcebox/soap/extract", Order=4)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
@@ -334,13 +334,13 @@ namespace Extract
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://home.textkernel.nl/sourcebox/soap/extract", Order=8)]
         [System.Xml.Serialization.XmlElementAttribute("options", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
-        public Extract.entry[] options;
+        public Evolution.Textkernel.Extract.entry[] options;
         
         public extractAdvancedRequest()
         {
         }
         
-        public extractAdvancedRequest(string account, string username, string password, Extract.entry[] clientSpecificArguments, string fileName, byte[] fileContent, byte[] tmfFileContent, byte[] apimap, Extract.entry[] options)
+        public extractAdvancedRequest(string account, string username, string password, Evolution.Textkernel.Extract.entry[] clientSpecificArguments, string fileName, byte[] fileContent, byte[] tmfFileContent, byte[] apimap, Evolution.Textkernel.Extract.entry[] options)
         {
             this.account = account;
             this.username = username;
@@ -408,13 +408,13 @@ namespace Extract
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://home.textkernel.nl/sourcebox/soap/extract", Order=6)]
         [System.Xml.Serialization.XmlElementAttribute("options", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
-        public Extract.entry[] options;
+        public Evolution.Textkernel.Extract.entry[] options;
         
         public extractURLRequest()
         {
         }
         
-        public extractURLRequest(string account, string username, string password, string publicURL, string outputType, string customQueryString, Extract.entry[] options)
+        public extractURLRequest(string account, string username, string password, string publicURL, string outputType, string customQueryString, Evolution.Textkernel.Extract.entry[] options)
         {
             this.account = account;
             this.username = username;
@@ -448,13 +448,13 @@ namespace Extract
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("dotnet-svcutil", "1.0.0.0")]
-    internal interface ExtractInterfaceChannel : Extract.ExtractInterface, System.ServiceModel.IClientChannel
+    internal interface ExtractInterfaceChannel : Evolution.Textkernel.Extract.ExtractInterface, System.ServiceModel.IClientChannel
     {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("dotnet-svcutil", "1.0.0.0")]
-    internal partial class ExtractInterfaceClient : System.ServiceModel.ClientBase<Extract.ExtractInterface>, Extract.ExtractInterface
+    internal partial class ExtractInterfaceClient : System.ServiceModel.ClientBase<Evolution.Textkernel.Extract.ExtractInterface>, Evolution.Textkernel.Extract.ExtractInterface
     {
         
     /// <summary>
@@ -498,14 +498,14 @@ namespace Extract
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Extract.extractResponse> Extract.ExtractInterface.extractAsync(Extract.extractRequest request)
+        System.Threading.Tasks.Task<Evolution.Textkernel.Extract.extractResponse> Evolution.Textkernel.Extract.ExtractInterface.extractAsync(Evolution.Textkernel.Extract.extractRequest request)
         {
             return base.Channel.extractAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Extract.extractResponse> extractAsync(string account, string username, string password, string fileName, byte[] fileContent, byte[] tmfFileContent, byte[] apimap, Extract.entry[] options)
+        public System.Threading.Tasks.Task<Evolution.Textkernel.Extract.extractResponse> extractAsync(string account, string username, string password, string fileName, byte[] fileContent, byte[] tmfFileContent, byte[] apimap, Evolution.Textkernel.Extract.entry[] options)
         {
-            Extract.extractRequest inValue = new Extract.extractRequest();
+            Evolution.Textkernel.Extract.extractRequest inValue = new Evolution.Textkernel.Extract.extractRequest();
             inValue.account = account;
             inValue.username = username;
             inValue.password = password;
@@ -514,18 +514,18 @@ namespace Extract
             inValue.tmfFileContent = tmfFileContent;
             inValue.apimap = apimap;
             inValue.options = options;
-            return ((Extract.ExtractInterface)(this)).extractAsync(inValue);
+            return ((Evolution.Textkernel.Extract.ExtractInterface)(this)).extractAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Extract.extractAdvancedResponse> Extract.ExtractInterface.extractAdvancedAsync(Extract.extractAdvancedRequest request)
+        System.Threading.Tasks.Task<Evolution.Textkernel.Extract.extractAdvancedResponse> Evolution.Textkernel.Extract.ExtractInterface.extractAdvancedAsync(Evolution.Textkernel.Extract.extractAdvancedRequest request)
         {
             return base.Channel.extractAdvancedAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Extract.extractAdvancedResponse> extractAdvancedAsync(string account, string username, string password, Extract.entry[] clientSpecificArguments, string fileName, byte[] fileContent, byte[] tmfFileContent, byte[] apimap, Extract.entry[] options)
+        public System.Threading.Tasks.Task<Evolution.Textkernel.Extract.extractAdvancedResponse> extractAdvancedAsync(string account, string username, string password, Evolution.Textkernel.Extract.entry[] clientSpecificArguments, string fileName, byte[] fileContent, byte[] tmfFileContent, byte[] apimap, Evolution.Textkernel.Extract.entry[] options)
         {
-            Extract.extractAdvancedRequest inValue = new Extract.extractAdvancedRequest();
+            Evolution.Textkernel.Extract.extractAdvancedRequest inValue = new Evolution.Textkernel.Extract.extractAdvancedRequest();
             inValue.account = account;
             inValue.username = username;
             inValue.password = password;
@@ -535,18 +535,18 @@ namespace Extract
             inValue.tmfFileContent = tmfFileContent;
             inValue.apimap = apimap;
             inValue.options = options;
-            return ((Extract.ExtractInterface)(this)).extractAdvancedAsync(inValue);
+            return ((Evolution.Textkernel.Extract.ExtractInterface)(this)).extractAdvancedAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Extract.extractURLResponse> Extract.ExtractInterface.extractURLAsync(Extract.extractURLRequest request)
+        System.Threading.Tasks.Task<Evolution.Textkernel.Extract.extractURLResponse> Evolution.Textkernel.Extract.ExtractInterface.extractURLAsync(Evolution.Textkernel.Extract.extractURLRequest request)
         {
             return base.Channel.extractURLAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Extract.extractURLResponse> extractURLAsync(string account, string username, string password, string publicURL, string outputType, string customQueryString, Extract.entry[] options)
+        public System.Threading.Tasks.Task<Evolution.Textkernel.Extract.extractURLResponse> extractURLAsync(string account, string username, string password, string publicURL, string outputType, string customQueryString, Evolution.Textkernel.Extract.entry[] options)
         {
-            Extract.extractURLRequest inValue = new Extract.extractURLRequest();
+            Evolution.Textkernel.Extract.extractURLRequest inValue = new Evolution.Textkernel.Extract.extractURLRequest();
             inValue.account = account;
             inValue.username = username;
             inValue.password = password;
@@ -554,7 +554,7 @@ namespace Extract
             inValue.outputType = outputType;
             inValue.customQueryString = customQueryString;
             inValue.options = options;
-            return ((Extract.ExtractInterface)(this)).extractURLAsync(inValue);
+            return ((Evolution.Textkernel.Extract.ExtractInterface)(this)).extractURLAsync(inValue);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync()
