@@ -5,7 +5,7 @@
     "Uri": "https://go.microsoft.com/fwlink/?linkid=858517"
   },
   "ExtendedData": {
-    "Uri": "https://staging.textkernel.nl/match/soap/extract?wsdl",
+    "Uri": "https://home.textkernel.nl/match/soap/extract?wsdl",
     "Namespace": "Evolution.Textkernel.Extract",
     "SelectedAccessLevelForGeneratedClass": "Internal",
     "GenerateMessageContract": false,
