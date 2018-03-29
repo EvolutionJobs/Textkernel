@@ -19,6 +19,9 @@
         [XmlElement("HighestEducationLevelCode")]
         public string HighestEducationLevelCode { get; set; }
 
+        [XmlElement("HighestEducationLevelCodeDescription")]
+        public string HighestEducationLevelCodeDescription { get; set; }
+
         [XmlElement("SummaryAmbitionSection")]
         public string SummaryAmbitionSection { get; set; }
 

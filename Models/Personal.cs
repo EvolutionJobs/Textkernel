@@ -33,5 +33,17 @@
 
         [XmlElement("Address", IsNullable = true)]
         public Address Address { get; set; }
+
+        [XmlArrayItem("HomePhone")]
+        public string[] HomePhones { get; set; }
+
+        [XmlArrayItem("MobilePhone")]
+        public string[] MobilePhones { get; set; }
+
+        [XmlArrayItem("Email")]
+        public string[] Emails { get; set; }
+
+        [XmlArrayItem("PersonalURL")]
+        public string[] PersonalWebsite { get; set; }
     }
 }

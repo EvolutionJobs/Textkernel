@@ -24,8 +24,5 @@
 
         [XmlElement("EndDate")]
         public string EndDate { get; set; }
-
-        [XmlElement("FirstName")]
-        public string FirstName { get; set; }
     }
 }
