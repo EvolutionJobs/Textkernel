@@ -13,7 +13,9 @@
     using System.Net.Http.Headers;
     using System.ServiceModel;
     using System.Text;
+    using System.Threading;
     using System.Threading.Tasks;
+    using System.Xml.Linq;
     using System.Xml.Serialization;
 
     class TextkernelParser : ITextkernelParser
@@ -23,7 +25,6 @@
         string account;
         string username;
         string password;
-        string environment;
 
         entry[] entries = new entry[0];
 
@@ -39,21 +40,17 @@
 
             this.serializer.UnknownElement += this.UnknownElement;
             this.serializer.UnknownAttribute += this.UnknownAttribute;
-            this.serializer.UnknownNode += this.UnknownNode;
             this.serializer.UnreferencedObject += this.UnreferencedObject;
         }
 
-        void UnreferencedObject(object sender, UnreferencedObjectEventArgs e) => 
+        void UnreferencedObject(object sender, UnreferencedObjectEventArgs e) =>
             this.logger.LogWarning("Unreferenced Object: {ID} {Object}", e.UnreferencedId, e.UnreferencedObject);
 
-        void UnknownNode(object sender, XmlNodeEventArgs e) => 
-            this.logger.LogWarning("Unknown Node - n:{LineNumber}/p:{LinePosition}, {Node}", e.LineNumber, e.LinePosition, e.Name);
-
         void UnknownAttribute(object sender, XmlAttributeEventArgs e) =>
-            this.logger.LogWarning("Unknown Attribute - n:{LineNumber}/p:{LinePosition}, {Attr}", e.LineNumber, e.LinePosition, e.Attr);
+            this.logger.LogWarning("Unknown Attribute - n:{LineNumber}/p:{LinePosition}, {Attr}", e.LineNumber, e.LinePosition, e.Attr.Name);
 
         void UnknownElement(object sender, XmlElementEventArgs e) =>
-            this.logger.LogWarning("Unknown Element - n:{LineNumber}/p:{LinePosition}, {Element}", e.LineNumber, e.LinePosition, e.Element);
+            this.logger.LogWarning("Unknown Element - n:{LineNumber}/p:{LinePosition}, {Element}", e.LineNumber, e.LinePosition, e.Element.Name);
 
         async Task<Profile> ITextkernelParser.Parse(byte[] file)
         {
@@ -66,10 +63,10 @@
             var result = await extractService.extractAdvancedAsync(this.account, this.username, this.password, this.entries, null, file, null, null, null);
             sw.Stop();
             string rawResult = result.@return;
-            this.logger.LogInformation("Textkernel Extract Response {Chars}chars in {Duration}ms", rawResult.Length, sw.ElapsedMilliseconds);
-
+            this.logger.LogInformation("Textkernel Extract Response {Chars}chars in {ServiceDuration}ms", rawResult.Length, sw.ElapsedMilliseconds);
 
             sw.Restart();
+
             Profile p;
 
             using (var stream = new MemoryStream())
@@ -79,10 +76,17 @@
                 writer.Flush();
                 stream.Position = 0;
 
-                p = this.serializer.Deserialize(stream) as Profile;
+                // Textkernel includes all empty nodes, which results in lots of serialised empty strings, 
+                // strip empty nodes out first
+                var cleaner = await XDocument.LoadAsync(stream, LoadOptions.None, CancellationToken.None);
+                cleaner.Descendants().Where(e => string.IsNullOrEmpty(e.Value)).Remove();
+
+                // Create a reader for the cleaned XML and deserialise
+                using (var reader = cleaner.CreateReader())
+                    p = this.serializer.Deserialize(reader) as Profile;
             }
             sw.Stop();
-            this.logger.LogInformation("Textkernel Parsed: {CurrentJob} in {Duration}ms", p?.Summary?.CurrentJob, sw.ElapsedMilliseconds);
+            this.logger.LogInformation("Textkernel Parsed: {CurrentJob} in {ParseDuration}ms", p?.Summary?.CurrentJob, sw.ElapsedMilliseconds);
 
             return p;
         }

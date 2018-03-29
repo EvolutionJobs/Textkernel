@@ -39,5 +39,11 @@
 
         [XmlElement("Performance")]
         public Performance Performance { get; set; }
+
+        [XmlAttribute("lang")]
+        public string Language { get; set; }
+
+        [XmlAttribute("file")]
+        public string File { get; set; }
     }
 }
