@@ -14,10 +14,10 @@
         public string CurrentEmployerLocation { get; set; }
 
         [XmlElement("TotalExperienceYears")]
-        public decimal? TotalExperienceYears { get; set; }
+        public string TotalExperienceYears { get; set; }
 
         [XmlElement("HighestEducationLevelCode")]
-        public int? HighestEducationLevelCode { get; set; }
+        public string HighestEducationLevelCode { get; set; }
 
         [XmlElement("SummaryAmbitionSection")]
         public string SummaryAmbitionSection { get; set; }

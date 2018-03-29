@@ -36,7 +36,24 @@
             this.account = account;
             this.username = username;
             this.password = password;
+
+            this.serializer.UnknownElement += this.UnknownElement;
+            this.serializer.UnknownAttribute += this.UnknownAttribute;
+            this.serializer.UnknownNode += this.UnknownNode;
+            this.serializer.UnreferencedObject += this.UnreferencedObject;
         }
+
+        void UnreferencedObject(object sender, UnreferencedObjectEventArgs e) => 
+            this.logger.LogWarning("Unreferenced Object: {ID} {Object}", e.UnreferencedId, e.UnreferencedObject);
+
+        void UnknownNode(object sender, XmlNodeEventArgs e) => 
+            this.logger.LogWarning("Unknown Node - n:{LineNumber}/p:{LinePosition}, {Node}", e.LineNumber, e.LinePosition, e.Name);
+
+        void UnknownAttribute(object sender, XmlAttributeEventArgs e) =>
+            this.logger.LogWarning("Unknown Attribute - n:{LineNumber}/p:{LinePosition}, {Attr}", e.LineNumber, e.LinePosition, e.Attr);
+
+        void UnknownElement(object sender, XmlElementEventArgs e) =>
+            this.logger.LogWarning("Unknown Element - n:{LineNumber}/p:{LinePosition}, {Element}", e.LineNumber, e.LinePosition, e.Element);
 
         async Task<Profile> ITextkernelParser.Parse(byte[] file)
         {
