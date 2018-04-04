@@ -2,7 +2,7 @@
   "ProviderId": "Microsoft.VisualStudio.ConnectedService.Wcf",
   "Version": "15.0.20119.1312",
   "GettingStartedDocument": {
-    "Uri": "https://go.microsoft.com/fwlink/?linkid=858517"
+    "Uri": "https://www.textkernel.com/hr-software/extract-cv-parsing/"
   },
   "ExtendedData": {
     "Uri": "https://home.textkernel.nl/match/soap/extract?wsdl",
