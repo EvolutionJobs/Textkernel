@@ -26,11 +26,11 @@ Then this service is available as `ITextkernelParser`, for instance as a Web API
 
 ``` c#
 [HttpPost("parseCV")]
-public async Task<IEnumerable<Resume>> ParseCV(
+public async Task<IEnumerable<Profile>> ParseCV(
     [FromServices] ITextkernelParser parser,     // Get the parser from the injected services 
     [FromForm] IEnumerable<IFormFile> files) // CV files posted from an HTML form
 {
-    var result = new List<Resume>();
+    var result = new List<Profile>();
     foreach (var f in files)
     {
         if (f.Length == 0)
